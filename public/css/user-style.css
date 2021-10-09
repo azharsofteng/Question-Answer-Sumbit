@@ -1,0 +1,9 @@
+.appointment-head {
+    box-shadow: 0 0 20px rgb(0 0 0 / 7%);
+    border-top: 6px solid rgb(98 44 195);
+    border-radius: 5px;
+}
+.appointment {
+    box-shadow: 0 0 20px rgb(0 0 0 / 7%);
+    border-radius: 5px;
+}

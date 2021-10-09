@@ -27,9 +27,9 @@
             </div>
         </div>
         <script src="{{ asset('js/scripts.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
-        <script src=" {{ asset('js/all.min.js') }}" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/simple-datatables@latest.js') }}" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src=" {{ asset('js/all.min.js') }}"></script>
+        <script src="{{ asset('js/simple-datatables@latest.js') }}"></script>
         <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
     </body>
 </html>
