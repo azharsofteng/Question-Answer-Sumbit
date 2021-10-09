@@ -16,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Authentication
-Route::get('login', [AuthenticationController::class, 'login'])->name('login');
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
+Route::post('login', [AuthenticationController::class, 'authCheck'])->name('auth.check');
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
-Route::get('/table', [DashboardController::class, 'table'])->name('table');
-Route::get('/form', [DashboardController::class, 'form'])->name('form');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/', [DashboardController::class, 'index'])->name('home');
+    Route::get('/table', [DashboardController::class, 'table'])->name('table');
+    Route::get('/form', [DashboardController::class, 'form'])->name('form');
+
+    Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+});

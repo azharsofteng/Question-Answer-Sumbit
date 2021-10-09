@@ -32,7 +32,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Input Group
                 </a> --}}
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('logout') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-sign-out-alt"></i></div>
                     Logout
                 </a>
