@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('login', [AuthenticationController::class, 'authCheck'])->name('auth.check');
 
+Route::get('/', [UserController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/', [DashboardController::class, 'index'])->name('home');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/table', [DashboardController::class, 'table'])->name('table');
     Route::get('/form', [DashboardController::class, 'form'])->name('form');
 

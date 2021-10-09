@@ -22,7 +22,7 @@ class AuthenticationController extends Controller
         $credentials = $request->only('username', 'password');
         if(Auth::attempt($credentials))
         {
-            return redirect()->intended('/');
+            return redirect()->intended('dashboard');
         }
         return redirect()->back()
             ->withInput($request->only('username'))
