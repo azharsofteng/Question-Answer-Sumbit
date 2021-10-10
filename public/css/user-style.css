@@ -7,3 +7,17 @@
     box-shadow: 0 0 20px rgb(0 0 0 / 7%);
     border-radius: 5px;
 }
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .appointment {
+        padding: 20px 10px !important;
+    }
+    .appointment-head {
+        padding: 15px !important;
+    }
+    .appointment-head h3 {
+        font-size: 18px;
+    }
+}

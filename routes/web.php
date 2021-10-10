@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,7 @@ Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('login', [AuthenticationController::class, 'authCheck'])->name('auth.check');
 
 Route::get('/', [UserController::class, 'index'])->name('home');
-
+Route::post('registration', [RegistrationController::class, 'store'])->name('registration.store');
 
 Route::get('get-upazila/{id}',function($id){
     return App\Models\Upazila::where('district_id',$id)->get();

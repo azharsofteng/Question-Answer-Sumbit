@@ -9,8 +9,8 @@
             <div class="appointment-head p-4 mb-3">
                 <h3>মাল্টিপারপাস হেলথ ভলান্টিয়া ( এমএইচভি)৩ দিন ব্যাপি রিফ্রেশার্স প্রশিক্ষণ চাহিদা নিরুপণ প্রশ্নপত্র ( অনলাইন)</h3>
             </div>
-            <div class="appointment pt-5 px-5">
-                <form action="" method="POST">
+            <div class="appointment p-5">
+                <form action="{{ route('registration.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- First Name -->
@@ -157,7 +157,7 @@
                             @enderror
                         </div>
                         <!-- Submit Button -->
-                        <div class="form-group pl-3 pb-3">
+                        <div class="form-group pl-3 mb-0">
                             <button type="submit" class="btn btn-info btn-block py-2 px-4">
                                 <span class="font-weight-bold">Next</span>
                             </button>
