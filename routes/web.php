@@ -22,6 +22,14 @@ Route::post('login', [AuthenticationController::class, 'authCheck'])->name('auth
 
 Route::get('/', [UserController::class, 'index'])->name('home');
 
+
+Route::get('get-upazila/{id}',function($id){
+    return App\Models\Upazila::where('district_id',$id)->get();
+});
+Route::get('get-union/{id}',function($id){
+    return App\Models\Union::where('upazilla_id',$id)->get();
+});
+
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/table', [DashboardController::class, 'table'])->name('table');

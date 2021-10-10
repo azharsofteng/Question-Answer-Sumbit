@@ -102,8 +102,12 @@
                             @enderror
                         </div>
                         <div class="form-group col-lg-6 mb-3">
-                            <label for="zila">জেলা নির্বাচন করুন <span class="text-danger">*</span></label>
-                            <input id="zila" type="text" name="zila"  class="form-control bg-white @error('zila') is-invalid @enderror" value="{{ old('zila') }}" placeholder="জেলা" />
+                            <label for="district">জেলা নির্বাচন করুন <span class="text-danger">*</span></label>
+                            <select name="district" id="distict_area" class="form-control bg-white @error('district') is-invalid @enderror">
+                                @foreach ($districts as $item)
+                                    <option value="{{ $item->id }}">{{ $item->bn_name }}</option>
+                                @endforeach
+                            </select>
                             @error('zila')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -112,7 +116,10 @@
                         </div>
                         <div class="form-group col-lg-6 mb-3">
                             <label for="upazila">উপজেলা নির্বাচন করুন <span class="text-danger">*</span></label>
-                            <input id="upazila" type="text" name="upazila"  class="form-control bg-white @error('upazila') is-invalid @enderror" value="{{ old('upazila') }}" placeholder="উপজেলা" />
+                            <select name="upazila" id="upazila_area" class="form-control @error('upazila') is-invalid @enderror">
+                                <option value="" class="text-danger">উপজেলা নির্বাচন করুন</option>
+                            </select>
+                            
                             @error('upazila')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -121,7 +128,9 @@
                         </div>
                         <div class="form-group col-lg-6 mb-3">
                             <label for="union">ইউনিয়ন নির্বাচন করুন  <span class="text-danger">*</span></label>
-                            <input id="union" type="text" name="union"  class="form-control bg-white @error('union') is-invalid @enderror" value="{{ old('union') }}" placeholder="ইউনিয়ন" />
+                            <select name="union" id="union_area" class="form-control @error('union') is-invalid @enderror">
+                                <option value="" class="text-danger">ইউনিয়ন নির্বাচন করুন</option>
+                            </select>
                             @error('union')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -129,8 +138,8 @@
                             @enderror
                         </div>
                         <div class="form-group col-lg-6 mb-3">
-                            <label for="word">ওয়ার্ড নির্বাচন করুন  <span class="text-danger">*</span></label>
-                            <input id="word" type="text" name="word"  class="form-control bg-white @error('word') is-invalid @enderror" value="{{ old('word') }}" placeholder="ওয়ার্ড" />
+                            <label for="word">ওয়ার্ড  নাম্বার  (ইংরেজিতে লেখুন)<span class="text-danger">*</span></label>
+                            <input id="word" type="text" name="word"  class="form-control bg-white @error('word') is-invalid @enderror" value="{{ old('word') }}" placeholder="ওয়ার্ড নাম্বার" />
                             @error('word')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -160,3 +169,61 @@
     </div>
 </div>
 @endsection
+@push('script')
+<script>
+    $('#distict_area').change(function(){
+        var district = $('#distict_area').val();
+        $('#upazila_area').html();
+        var option = "";
+        $.get("/get-upazila/"+district, function(data){
+            //data = JSON.parse(data)
+            //console.log(data);
+            data.forEach(el => {
+                //console.log(el.name)
+                option += "<option value='"+el.id+"'>"+el.bn_name+"</option>"
+            });
+            $('#upazila_area').html(option);
+        })
+    })
+    $('#upazila_area').change(function(){
+        var district = $('#upazila_area').val();
+        $('#union_area').html();
+        var option = "";
+        $.get("/get-union/"+district, function(data){
+            //data = JSON.parse(data)
+            //console.log(data);
+            data.forEach(el => {
+                //console.log(el.name)
+                option += "<option value='"+el.id+"'>"+el.bn_name+"</option>"
+            });
+            $('#union_area').html(option);
+        })
+    })
+</script>
+<script>
+    $(document).ready(function () {
+            $("#myselect").change(function () {
+                // var selectedVal = $("#myselect option:selected").text();
+                var selectedVal = $("#myselect option:selected").attr("id");
+                if(selectedVal == "toggle"){
+                    $("#content").show();
+                } else{
+                    $("#content").hide();
+                }
+                console.log("|"+selectedVal);
+            });
+        });
+    $(document).ready(function () {
+        $("#areaselect").change(function () {
+            // var selectedVal = $("#areaselect option:selected").text();
+            var selectedVal = $("#areaselect option:selected").attr("id");
+            if(selectedVal == "areatoggle"){
+                $("#areacontent").show();
+            } else{
+                $("#areacontent").hide();
+            }
+            console.log("|"+selectedVal);
+        });
+    });
+</script>    
+@endpush
