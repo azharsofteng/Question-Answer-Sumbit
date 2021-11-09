@@ -12,4 +12,8 @@ class UserController extends Controller
         $districts = District::all();
         return view('pages.home', compact('districts'));
     }
+    public function question()
+    {
+        return view('pages.question');
+    }
 }

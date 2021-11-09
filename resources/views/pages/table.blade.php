@@ -4,12 +4,12 @@
 <main>
     <div class="container-fluid">
         <div class="heading-title p-2 my-2">
-            <span class="my-3 heading "><i class="fas fa-home"></i> <a class="" href="">Home</a> > DataTable</span>
+            <span class="my-3 heading "><i class="fas fa-home"></i> <a class="" href="">Home</a> > Answer List</span>
         </div>
         <div class="card my-3">
             <div class="card-header d-flex justify-content-between">
-                <div class="table-head"><i class="fas fa-table me-1"></i>DataTable Example</div>
-                <a href="" class="btn btn-addnew"> <i class="fa fa-plus"></i> add new</a>
+                <div class="table-head"><i class="fas fa-table me-1"></i>All Answer List</div>
+                {{-- <a href="" class="btn btn-addnew"> <i class="fa fa-plus"></i> add new</a> --}}
             </div>
             <div class="card-body table-card-body">
                 <table id="datatablesSimple">

@@ -28,6 +28,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Ans List
                 </a>
+                <a class="nav-link {{ Request::is('send.sms') ? 'active' : '' }}" href="{{ route('table') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Send SMS
+                </a>
                 {{-- <a class="nav-link {{ Request::is('form') ? 'active' : '' }}" href="{{ route('form') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Input Group

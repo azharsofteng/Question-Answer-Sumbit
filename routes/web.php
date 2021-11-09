@@ -22,6 +22,7 @@ Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('login', [AuthenticationController::class, 'authCheck'])->name('auth.check');
 
 Route::get('/', [UserController::class, 'index'])->name('home');
+Route::get('/question', [UserController::class, 'question'])->name('question');
 Route::post('registration', [RegistrationController::class, 'store'])->name('registration.store');
 
 Route::get('get-upazila/{id}',function($id){
@@ -33,8 +34,9 @@ Route::get('get-union/{id}',function($id){
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/table', [DashboardController::class, 'table'])->name('table');
+    Route::get('/Answer-list', [DashboardController::class, 'table'])->name('table');
     Route::get('/form', [DashboardController::class, 'form'])->name('form');
 
     Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+    Route::get('/send-sms', [DashboardController::class, 'SendSms'])->name('send.sms');
 });

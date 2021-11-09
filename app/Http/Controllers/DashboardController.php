@@ -20,4 +20,9 @@ class DashboardController extends Controller
     {
         return view('pages.form');
     }
+
+    public function SendSms()
+    {
+        return view('pages.send-sms');
+    }
 }
